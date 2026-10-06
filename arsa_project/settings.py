@@ -63,10 +63,12 @@ WSGI_APPLICATION = 'arsa_project.wsgi.application'
 
 # Database - PostgreSQL for production, SQLite for local development
 # To use PostgreSQL, set environment variables or uncomment the config below.
+
 DATABASES = {
     'default': dj_database_url.config(
         default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
         conn_max_age=600,
+        conn_health_checks=True,
     )
 }
 
