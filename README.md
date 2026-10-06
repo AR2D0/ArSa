@@ -1,7 +1,5 @@
 <<<<<<< HEAD
-# ArSa – Romantic Date Invitation Website
-
-**Ar** = Arshia · **Sa** = Samina
+# ArSa – Date Invitation Website
 
 A private, multi-step romantic invitation web application built with Django.
 
@@ -54,11 +52,6 @@ python manage.py runserver
 ```
 
 ### Seeded Accounts
-
-| Username | Password   | Role  |
-|----------|------------|-------|
-| samina   | samina123  | User  |
-| arshia   | arsa2026   | Admin |
 
 ## Production PostgreSQL
 
