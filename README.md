@@ -81,7 +81,6 @@ static/js/        # arsa.js (hearts, confetti helpers)
 - Location is stored as lat/lng + optional name.
 - Mission progress is kept in the session until final submit.
 
-Made with ❤️ for Samina.
-=======
+
 # ArSa
 >>>>>>> 4bc433a1506116a187034e61af605b4ebd4bb8ad
