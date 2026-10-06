@@ -1,11 +1,12 @@
 from django.db import migrations
+from django.contrib.auth.hashers import make_password
 
 
 def create_users(apps, schema_editor):
     User = apps.get_model('accounts', 'User')
 
     if not User.objects.filter(username='arshia').exists():
-        user = User(
+        User.objects.create(
             username='arshia',
             email='arshia@arsa.local',
             display_name='Arshia',
@@ -13,12 +14,11 @@ def create_users(apps, schema_editor):
             is_staff=True,
             is_superuser=True,
             is_active=True,
+            password=make_password('@Rshia2007'),
         )
-        user.set_password('@Rshia2007')
-        user.save()
 
     if not User.objects.filter(username='samina').exists():
-        user = User(
+        User.objects.create(
             username='samina',
             email='samina@arsa.local',
             display_name='Samina',
@@ -26,9 +26,8 @@ def create_users(apps, schema_editor):
             is_staff=False,
             is_superuser=False,
             is_active=True,
+            password=make_password('kian2010'),
         )
-        user.set_password('kian2010')
-        user.save()
 
 
 def reverse_users(apps, schema_editor):
