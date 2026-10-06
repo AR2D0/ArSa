@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Choose a Time{% endblock %}
+
+{% block content %}
+<div class="mission-container">
+    <div class="step-indicator">
+        <span class="step-dot done"></span>
+        <span class="step-dot done"></span>
+        <span class="step-dot active"></span>
+        <span class="step-dot"></span>
+        <span class="step-dot"></span>
+    </div>
+
+    <div class="glass-card p-4 p-md-5 text-center">
+        <h1 class="display-6 fw-bold mb-2">Choose a time</h1>
+        <p class="text-muted mb-1">Date selected: <strong>{{ selected_date }}</strong></p>
+        <p class="text-muted mb-4">When should we meet? ⏰</p>
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="mb-4 text-start">
+                <label class="form-label" for="id_selected_time">{{ form.selected_time.label }}</label>
+                {{ form.selected_time }}
+                {% if form.selected_time.errors %}
+                <div class="text-danger small mt-1">{{ form.selected_time.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="d-flex gap-3 justify-content-center">
+                <a href="{% url 'dates:mission_date' %}" class="btn btn-outline-arsa">← Previous</a>
+                <button type="submit" class="btn btn-primary-arsa">Next →</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

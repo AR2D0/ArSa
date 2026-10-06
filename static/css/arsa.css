@@ -1,0 +1,343 @@
+/* ============================================================
+   ArSa – Romantic Invitation Theme
+   Palette: Primary #8E1EA2 | Secondary #C654C3 | Accent #ED96D7 | Light #FFC0DE
+   ============================================================ */
+
+:root {
+    --primary: #8E1EA2;
+    --secondary: #C654C3;
+    --accent: #ED96D7;
+    --light: #FFC0DE;
+    --bg-gradient: linear-gradient(135deg, #2a0a30 0%, #4a1a55 40%, #6b2b7a 100%);
+    --glass-bg: rgba(255, 255, 255, 0.12);
+    --glass-border: rgba(255, 255, 255, 0.22);
+    --text-light: #fff8fc;
+    --shadow: 0 8px 32px rgba(142, 30, 162, 0.25);
+    --radius: 1.25rem;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--text-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .display-font {
+    font-family: 'Playfair Display', serif;
+}
+
+/* ----- Navbar ----- */
+.arsa-navbar {
+    background: rgba(42, 10, 48, 0.85) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.arsa-navbar .navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+}
+
+.text-accent {
+    color: var(--accent) !important;
+}
+
+.nav-link {
+    transition: var(--transition);
+    font-weight: 400;
+}
+
+.nav-link:hover {
+    color: var(--accent) !important;
+}
+
+/* ----- Glassmorphism cards ----- */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(142, 30, 162, 0.35);
+}
+
+/* ----- Buttons ----- */
+.btn-primary-arsa {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border: none;
+    color: white;
+    font-weight: 500;
+    border-radius: 50px;
+    padding: 0.75rem 2rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(142, 30, 162, 0.4);
+}
+
+.btn-primary-arsa:hover {
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(198, 84, 195, 0.5);
+}
+
+.btn-outline-arsa {
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    background: transparent;
+    border-radius: 50px;
+    padding: 0.7rem 1.8rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn-outline-arsa:hover {
+    background: var(--accent);
+    color: var(--primary);
+}
+
+.btn-danger-soft {
+    background: rgba(220, 53, 69, 0.2);
+    border: 2px solid rgba(220, 53, 69, 0.5);
+    color: #ff8a9a;
+    border-radius: 50px;
+    padding: 0.7rem 1.8rem;
+    transition: var(--transition);
+}
+
+.btn-danger-soft:hover {
+    background: rgba(220, 53, 69, 0.35);
+    color: white;
+}
+
+/* ----- Forms ----- */
+.form-control, .form-select {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+    color: white;
+    border-radius: 0.75rem;
+    transition: var(--transition);
+}
+
+.form-control:focus, .form-select:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--accent);
+    color: white;
+    box-shadow: 0 0 0 0.25rem rgba(237, 150, 215, 0.25);
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--light);
+}
+
+/* ----- Mission steps ----- */
+.mission-container {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.step-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.step-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    transition: var(--transition);
+}
+
+.step-dot.active {
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    transform: scale(1.3);
+}
+
+.step-dot.done {
+    background: var(--secondary);
+}
+
+/* ----- Map ----- */
+#map {
+    height: 380px;
+    border-radius: var(--radius);
+    border: 2px solid var(--glass-border);
+    z-index: 1;
+}
+
+/* ----- Stats cards ----- */
+.stat-card {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.stat-card .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(135deg, var(--accent), var(--light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ----- Floating hearts background ----- */
+.hearts-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    font-size: 1.2rem;
+    opacity: 0.15;
+    animation: float-up 12s linear infinite;
+    color: var(--accent);
+}
+
+@keyframes float-up {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 0.2; }
+    90% { opacity: 0.15; }
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ----- Success celebration ----- */
+.celebration-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.balloon {
+    position: absolute;
+    font-size: 2.5rem;
+    animation: balloon-float 8s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+@keyframes balloon-float {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-40px) rotate(5deg); }
+}
+
+/* ----- Login page ----- */
+.login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 2.5rem;
+}
+
+.login-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    background: linear-gradient(135deg, var(--accent), var(--light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ----- Tables ----- */
+.table-arsa {
+    color: var(--text-light);
+}
+
+.table-arsa thead th {
+    border-bottom: 2px solid var(--glass-border);
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.table-arsa td, .table-arsa th {
+    border-color: var(--glass-border);
+    vertical-align: middle;
+}
+
+.table-arsa tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* ----- Modal override ----- */
+.modal-content {
+    background: linear-gradient(145deg, #3a1545, #2a0a30);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    color: white;
+}
+
+.modal-header {
+    border-bottom-color: var(--glass-border);
+}
+
+.modal-footer {
+    border-top-color: var(--glass-border);
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 576px) {
+    .stat-card .stat-number {
+        font-size: 2rem;
+    }
+    #map {
+        height: 280px;
+    }
+    .login-card {
+        padding: 1.75rem;
+    }
+}
+
+/* Utility */
+.text-gradient {
+    background: linear-gradient(135deg, var(--accent), var(--light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.rounded-arsa {
+    border-radius: var(--radius);
+}

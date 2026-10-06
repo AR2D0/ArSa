@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Review Selection{% endblock %}
+
+{% block content %}
+<div class="mission-container">
+    <div class="step-indicator">
+        <span class="step-dot done"></span>
+        <span class="step-dot done"></span>
+        <span class="step-dot done"></span>
+        <span class="step-dot done"></span>
+        <span class="step-dot active"></span>
+    </div>
+
+    <div class="glass-card p-4 p-md-5">
+        <h1 class="display-6 fw-bold mb-4 text-center">Review Your Selection</h1>
+
+        <div class="row g-3 mb-4">
+            <div class="col-4 text-muted">Date</div>
+            <div class="col-8 fw-medium">{{ selected_date }}</div>
+
+            <div class="col-4 text-muted">Time</div>
+            <div class="col-8 fw-medium">{{ selected_time }}</div>
+
+            <div class="col-4 text-muted">Location</div>
+            <div class="col-8 fw-medium">
+                {% if location_name %}{{ location_name }}{% else %}Selected on map{% endif %}
+                <br>
+                <small class="text-muted">{{ latitude }}, {{ longitude }}</small>
+            </div>
+        </div>
+
+        <!-- Mini map preview -->
+        <div id="preview-map" style="height: 200px; border-radius: 1rem; margin-bottom: 1.5rem;"></div>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="d-flex gap-3 justify-content-center">
+                <a href="{% url 'dates:mission_location' %}" class="btn btn-outline-arsa">← Previous</a>
+                <button type="submit" class="btn btn-primary-arsa btn-lg px-4">Submit 💌</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+    const lat = {{ latitude }};
+    const lng = {{ longitude }};
+    const map = L.map('preview-map', {
+        zoomControl: false,
+        dragging: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        keyboard: false
+    }).setView([lat, lng], 14);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '',
+        maxZoom: 19
+    }).addTo(map);
+    L.marker([lat, lng]).addTo(map);
+})();
+</script>
+{% endblock %}

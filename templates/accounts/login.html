@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block body_class %}login-page{% endblock %}
+{% block main_class %}{% endblock %}
+
+{% block content %}
+<div class="login-wrapper">
+    <div class="glass-card login-card text-center">
+        <div class="mb-4">
+            <div class="login-logo mb-2">ArSa</div>
+            <p class="text-muted mb-0">A private invitation for Samina ❤️</p>
+        </div>
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+            <div class="alert alert-danger glass-card py-2">
+                {% for error in form.non_field_errors %}{{ error }}{% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="mb-3 text-start">
+                <label class="form-label" for="id_username">Username</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                <div class="text-danger small mt-1">{{ form.username.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="mb-4 text-start">
+                <label class="form-label" for="id_password">Password</label>
+                {{ form.password }}
+                {% if form.password.errors %}
+                <div class="text-danger small mt-1">{{ form.password.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-primary-arsa w-100 py-2">
+                Enter ❤️
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

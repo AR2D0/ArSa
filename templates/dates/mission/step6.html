@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Mission Completed{% endblock %}
+
+{% block content %}
+<div class="celebration-container text-center position-relative py-5">
+    <!-- Balloons -->
+    <span class="balloon" style="left: 10%; top: 20%; animation-delay: 0s;">🎈</span>
+    <span class="balloon" style="left: 80%; top: 15%; animation-delay: 1s;">🎈</span>
+    <span class="balloon" style="left: 20%; top: 60%; animation-delay: 2s;">💕</span>
+    <span class="balloon" style="left: 75%; top: 55%; animation-delay: 0.5s;">💗</span>
+    <span class="balloon" style="left: 50%; top: 10%; animation-delay: 1.5s;">🎈</span>
+
+    <div class="glass-card p-5 mx-auto" style="max-width: 520px;">
+        <div class="mb-3" style="font-size: 4rem;">🎉</div>
+        <h1 class="display-5 fw-bold text-gradient mb-3">Mission Completed ❤️</h1>
+        <p class="lead mb-4">Your date request has been successfully submitted.</p>
+        <p class="text-muted mb-4">Arshia can't wait to see you ✨</p>
+
+        <a href="{% url 'dates:dashboard' %}" class="btn btn-primary-arsa btn-lg">
+            Back To Menu
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Confetti + fireworks on load
+    if (typeof arsaCelebrate === 'function') arsaCelebrate();
+    setTimeout(function () {
+        if (typeof arsaFireworks === 'function') arsaFireworks();
+    }, 800);
+    // Extra hearts
+    setTimeout(function () {
+        if (typeof confetti === 'function') {
+            confetti({
+                particleCount: 30,
+                spread: 70,
+                origin: { y: 0.7 },
+                shapes: ['circle'],
+                colors: ['#ED96D7', '#FFC0DE', '#C654C3']
+            });
+        }
+    }, 1500);
+});
+</script>
+{% endblock %}

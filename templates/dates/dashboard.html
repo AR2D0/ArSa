@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="display-5 fw-bold mb-2">
+        Welcome {{ user.get_display_name }} ❤️
+    </h1>
+    <p class="lead text-muted">Your private invitation space</p>
+</div>
+
+<div class="row g-4 mb-5">
+    <div class="col-md-4">
+        <div class="glass-card stat-card h-100">
+            <div class="stat-number">{{ total_requests }}</div>
+            <div class="text-muted">Total Requests</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="glass-card stat-card h-100">
+            {% if latest_request %}
+            <div class="stat-number" style="font-size:1.4rem;">
+                {{ latest_request.selected_date|date:"M d" }}
+            </div>
+            <div class="text-muted small">{{ latest_request.selected_time|time:"g:i A" }}</div>
+            {% else %}
+            <div class="stat-number" style="font-size:1.4rem;">—</div>
+            {% endif %}
+            <div class="text-muted">Latest Request</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="glass-card stat-card h-100">
+            <div class="stat-number" style="font-size:1.4rem;">{{ user.role|title }}</div>
+            <div class="text-muted">Account Role</div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 justify-content-center">
+    <div class="col-auto">
+        <a href="{% url 'dates:mission_start' %}" class="btn btn-primary-arsa btn-lg">
+            Start Date Mission 💌
+        </a>
+    </div>
+    <div class="col-auto">
+        <a href="{% url 'dates:profile' %}" class="btn btn-outline-arsa btn-lg">Profile</a>
+    </div>
+    <div class="col-auto">
+        <a href="{% url 'dates:history' %}" class="btn btn-outline-arsa btn-lg">History</a>
+    </div>
+</div>
+{% endblock %}

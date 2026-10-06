@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Pick a Date{% endblock %}
+
+{% block content %}
+<div class="mission-container">
+    <div class="step-indicator">
+        <span class="step-dot done"></span>
+        <span class="step-dot active"></span>
+        <span class="step-dot"></span>
+        <span class="step-dot"></span>
+        <span class="step-dot"></span>
+    </div>
+
+    <div class="glass-card p-4 p-md-5 text-center">
+        <h1 class="display-6 fw-bold mb-2">Congrats my little Samina ❤️</h1>
+        <p class="text-muted mb-4">Now you have to pick a date.</p>
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="mb-4 text-start">
+                <label class="form-label" for="id_selected_date">{{ form.selected_date.label }}</label>
+                {{ form.selected_date }}
+                {% if form.selected_date.errors %}
+                <div class="text-danger small mt-1">{{ form.selected_date.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-primary-arsa btn-lg px-5">Next →</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
